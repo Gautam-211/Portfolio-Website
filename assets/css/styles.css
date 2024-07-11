@@ -331,7 +331,7 @@ body.light-theme {
 }
 
 .home__img {
-  width: 160px;
+  width: 200px;
 }
 
 .home__handle {
@@ -1228,5 +1228,102 @@ body.light-theme {
     font-size: 1.25rem;
     padding: 0.4rem;
     border-radius: 0.5rem;
+  }
+}
+
+
+
+/* Parallax effeact */
+.wrap {
+  margin: 1rem;
+
+  display: flex;
+  justify-content: center;
+
+  transform-style: preserve-3d;
+  transform: perspective(100rem);
+
+  cursor: pointer;
+}
+
+.container--4 {
+  --rX: 0;
+  --rY: 0;
+  --bX: 50%;
+  --bY: 10%;
+
+  width: 18rem;
+  height: 20rem;
+  border: 1px solid var(--background-color);
+  border-radius: 1.3rem;
+  padding: 4rem;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
+
+  background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1)), url("../img/IMG_20240302_202307-2.png");
+  background-position: var(--bX) var(--bY);
+  background-size: 25rem auto;
+  box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
+
+  transition: transform .6s 1s;
+}
+
+.container--4::before,
+.container--4::after {
+  content: "";
+
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #fff;
+
+  position: absolute;
+  z-index: 2;
+
+  opacity: .3;
+  transition: .3s;
+}
+
+.container--4::before {
+  top: 2rem;
+  right: 2rem;
+
+  border-bottom-width: 0;
+  border-left-width: 0;
+}
+
+.container--4::after {
+  bottom: 2rem;
+  left: 2rem;
+
+  border-top-width: 0;
+  border-right-width: 0;
+}
+
+.container--active {
+  transition: none;
+}
+
+.container--2 {
+  filter: hue-rotate(80deg) saturate(140%);
+}
+
+.container--3 {
+  filter: hue-rotate(160deg) saturate(140%);
+}
+
+.wrap:hover .container--4::before,
+.wrap:hover .container--4::after {
+  width: calc(100% - 4rem);
+  height: calc(100% - 4rem);
+}
+
+@media screen and (max-width: 1000px){
+  .container--4{
+    width:15rem;
+    height:17rem;
   }
 }
