@@ -649,7 +649,9 @@ body.light-theme {
 
 .work__filters {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  row-gap: 1rem;
   align-items: center;
   column-gap: 0.75rem;
   margin-bottom: 2rem;
